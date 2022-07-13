@@ -94,7 +94,12 @@ class DetailViewController: UIViewController, UIScrollViewDelegate {
     
     
     @IBAction func ExportButton(_ sender: Any) {
-        exportFile.exportFile(fileInfo: fileInfo)
+        if exportFile.exportFile(fileInfo: fileInfo) {
+            let alertController = UIAlertController(title: "Completed", message: "Export completed.", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler:  nil))
+            self.present(alertController, animated: true, completion: nil)
+        }
+        
     }
     
     

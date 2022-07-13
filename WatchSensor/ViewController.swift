@@ -19,7 +19,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 //        let directoryInfo = realm.objects(DirectoryInfo.self)
-        let directoryInfo = [DirectoryInfoMock.mock1] //　テスト用
+        let directoryInfo = [DirectoryInfoMock.mock1, DirectoryInfoMock.mock2] //　テスト用
         return directoryInfo.count
     }
     
@@ -27,7 +27,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         let cell = tableView.dequeueReusableCell(withIdentifier: "fileCell", for: indexPath)
         
 //        let directoryInfo = realm.objects(DirectoryInfo.self)
-        let directoryInfo = [DirectoryInfoMock.mock1] // テスト用
+        let directoryInfo = [DirectoryInfoMock.mock1, DirectoryInfoMock.mock2] // テスト用
         cell.textLabel?.text = "\(directoryInfo[indexPath.row].directoryName)"
         cell.textLabel?.textColor = UIColor.white
         return cell
@@ -63,7 +63,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+//
 //        let sensorFileName = realm.objects(SensorInfo.self)[indexPath.row].fileName
 //        let sensorFileContents = realm.objects(SensorInfo.self)[indexPath.row].fileContents
 //        let sensorInfo = [sensorFileName, sensorFileContents]
@@ -75,7 +75,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
 //        let gravityAndAttitudeFileName = realm.objects(GravityAndAttitudeInfo.self)[indexPath.row].fileName
 //        let gravityAndAttitudeFileContents = realm.objects(GravityAndAttitudeInfo.self)[indexPath.row].fileContents
 //        let gravityAndAttitudeInfo = [gravityAndAttitudeFileName, gravityAndAttitudeFileContents]
-        
+//
 //        performSegue(withIdentifier: "Detail", sender: FileInfo(sensorInfo: sensorInfo, gpsInfo: gpsInfo, directoryInfo: realm.objects(DirectoryInfo.self)[indexPath.row].directoryName, gravityAndAttitudeInfo: gravityAndAttitudeInfo))
         
         performSegue(withIdentifier: "Detail", sender: FileInfo.mock1)// テスト用

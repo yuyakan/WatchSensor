@@ -10,5 +10,6 @@ import Foundation
 struct DirectoryInfoMock {
     var directoryName: String = ""
     
-    static let mock1 = DirectoryInfoMock(directoryName: "mock")
+    static let mock1 = DirectoryInfoMock(directoryName: "[07_10]18-49-31")
+    static let mock2 = DirectoryInfoMock(directoryName: "[07_12]12-30-11")
 }

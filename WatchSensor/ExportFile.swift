@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 class ExportFile {
     
-    func exportFile(fileInfo: FileInfo) {
+    func exportFile(fileInfo: FileInfo) -> Bool {
         let fileManager = FileManager.default
         let directory = NSHomeDirectory() + "/Documents/" + fileInfo.directoryInfo
         
@@ -41,8 +42,10 @@ class ExportFile {
             print("seccess")
         } catch {
             print("failed make file")
+            return false
         }
         
+        return true
     }
     
 }
