@@ -8,26 +8,28 @@
 import UIKit
 import WatchConnectivity
 import RealmSwift
+import CoreLocation
 
 
 class ViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    private let locationManager = CLLocationManager()
     let realm = try! Realm()
     
     @IBOutlet weak var TableView: UITableView!
     
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        let directoryInfo = realm.objects(DirectoryInfo.self)
-        let directoryInfo = [DirectoryInfoMock.mock1, DirectoryInfoMock.mock2] //　テスト用
+        let directoryInfo = realm.objects(DirectoryInfo.self)
+//        let directoryInfo = [DirectoryInfoMock.mock1, DirectoryInfoMock.mock2] //　テスト用
         return directoryInfo.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "fileCell", for: indexPath)
         
-//        let directoryInfo = realm.objects(DirectoryInfo.self)
-        let directoryInfo = [DirectoryInfoMock.mock1, DirectoryInfoMock.mock2] // テスト用
+        let directoryInfo = realm.objects(DirectoryInfo.self)
+//        let directoryInfo = [DirectoryInfoMock.mock1, DirectoryInfoMock.mock2] // テスト用
         cell.textLabel?.text = "\(directoryInfo[indexPath.row].directoryName)"
         cell.textLabel?.textColor = UIColor.white
         return cell
@@ -63,22 +65,22 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-//
-//        let sensorFileName = realm.objects(SensorInfo.self)[indexPath.row].fileName
-//        let sensorFileContents = realm.objects(SensorInfo.self)[indexPath.row].fileContents
-//        let sensorInfo = [sensorFileName, sensorFileContents]
-//
-//        let gpsFileName = realm.objects(GpsInfo.self)[indexPath.row].fileName
-//        let gpsFileContents = realm.objects(GpsInfo.self)[indexPath.row].fileContents
-//        let gpsInfo = [gpsFileName, gpsFileContents]
-//
-//        let gravityAndAttitudeFileName = realm.objects(GravityAndAttitudeInfo.self)[indexPath.row].fileName
-//        let gravityAndAttitudeFileContents = realm.objects(GravityAndAttitudeInfo.self)[indexPath.row].fileContents
-//        let gravityAndAttitudeInfo = [gravityAndAttitudeFileName, gravityAndAttitudeFileContents]
-//
-//        performSegue(withIdentifier: "Detail", sender: FileInfo(sensorInfo: sensorInfo, gpsInfo: gpsInfo, directoryInfo: realm.objects(DirectoryInfo.self)[indexPath.row].directoryName, gravityAndAttitudeInfo: gravityAndAttitudeInfo))
+
+        let sensorFileName = realm.objects(SensorInfo.self)[indexPath.row].fileName
+        let sensorFileContents = realm.objects(SensorInfo.self)[indexPath.row].fileContents
+        let sensorInfo = [sensorFileName, sensorFileContents]
+
+        let gpsFileName = realm.objects(GpsInfo.self)[indexPath.row].fileName
+        let gpsFileContents = realm.objects(GpsInfo.self)[indexPath.row].fileContents
+        let gpsInfo = [gpsFileName, gpsFileContents]
+
+        let gravityAndAttitudeFileName = realm.objects(GravityAndAttitudeInfo.self)[indexPath.row].fileName
+        let gravityAndAttitudeFileContents = realm.objects(GravityAndAttitudeInfo.self)[indexPath.row].fileContents
+        let gravityAndAttitudeInfo = [gravityAndAttitudeFileName, gravityAndAttitudeFileContents]
+
+        performSegue(withIdentifier: "Detail", sender: FileInfo(sensorInfo: sensorInfo, gpsInfo: gpsInfo, directoryInfo: realm.objects(DirectoryInfo.self)[indexPath.row].directoryName, gravityAndAttitudeInfo: gravityAndAttitudeInfo))
         
-        performSegue(withIdentifier: "Detail", sender: FileInfo.mock1)// テスト用
+//        performSegue(withIdentifier: "Detail", sender: FileInfo.mock1)// テスト用
     }
     
     
@@ -96,6 +98,10 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        if locationManager.authorizationStatus == .notDetermined {
+            locationManager.requestAlwaysAuthorization()
+        }
         
         if WCSession.isSupported() {
             let session = WCSession.default

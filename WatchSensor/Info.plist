@@ -27,5 +27,9 @@
 	</array>
 	<key>UIFileSharingEnabled</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>Get GPS Information</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Get GPS Information</string>
 </dict>
 </plist>
