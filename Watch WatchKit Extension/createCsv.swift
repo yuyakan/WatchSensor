@@ -9,6 +9,7 @@ import Foundation
 
 class CreateCsv {
     let getSensorModel = GetSenorModel.shared
+    
     func createMotionCsv() -> String {
         var csv = zip(zip(zip(zip(zip(zip(getSensorModel.getDataLog().timeStamp, getSensorModel.getDataLog().accelerationData.X).map{ log in "\(log.0), \(log.1)"}
                                       , getSensorModel.getDataLog().accelerationData.Y).map{ log in "\(log.0), \(log.1)" }

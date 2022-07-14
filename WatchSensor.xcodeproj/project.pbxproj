@@ -22,6 +22,7 @@
 		4B538ABA28716BBE0026858D /* GPSManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4B538AB928716BBE0026858D /* GPSManager.swift */; };
 		4BA39D5A287DB51700E74EE9 /* FileInfo+mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA39D59287DB51700E74EE9 /* FileInfo+mock.swift */; };
 		4BA39D64287DBB0200E74EE9 /* DirectoyrInfo+mock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA39D63287DBB0200E74EE9 /* DirectoyrInfo+mock.swift */; };
+		4BA682CB28806C9C0013BEC8 /* CreateCSVTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BA682CA28806C9C0013BEC8 /* CreateCSVTest.swift */; };
 		4BB3FF5928733B160042AB9F /* FileInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB3FF5828733B160042AB9F /* FileInfo.swift */; };
 		4BB3FF5B287345190042AB9F /* GpsInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB3FF5A287345190042AB9F /* GpsInfo.swift */; };
 		4BB3FF5D2873458B0042AB9F /* SensorInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BB3FF5C2873458B0042AB9F /* SensorInfo.swift */; };
@@ -143,6 +144,7 @@
 		4B538AB928716BBE0026858D /* GPSManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GPSManager.swift; sourceTree = "<group>"; };
 		4BA39D59287DB51700E74EE9 /* FileInfo+mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "FileInfo+mock.swift"; sourceTree = "<group>"; };
 		4BA39D63287DBB0200E74EE9 /* DirectoyrInfo+mock.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DirectoyrInfo+mock.swift"; sourceTree = "<group>"; };
+		4BA682CA28806C9C0013BEC8 /* CreateCSVTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateCSVTest.swift; sourceTree = "<group>"; };
 		4BB3FF5828733B160042AB9F /* FileInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FileInfo.swift; sourceTree = "<group>"; };
 		4BB3FF5A287345190042AB9F /* GpsInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GpsInfo.swift; sourceTree = "<group>"; };
 		4BB3FF5C2873458B0042AB9F /* SensorInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SensorInfo.swift; sourceTree = "<group>"; };
@@ -407,6 +409,7 @@
 			children = (
 				4BC76F1828699A3700E53098 /* WatchTests.swift */,
 				4B49E835287D045F00D21BEF /* SendFileWCSessionTest.swift */,
+				4BA682CA28806C9C0013BEC8 /* CreateCSVTest.swift */,
 			);
 			path = WatchTests;
 			sourceTree = "<group>";
@@ -944,6 +947,7 @@
 			files = (
 				4B49E836287D045F00D21BEF /* SendFileWCSessionTest.swift in Sources */,
 				4BC76F1928699A3700E53098 /* WatchTests.swift in Sources */,
+				4BA682CB28806C9C0013BEC8 /* CreateCSVTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

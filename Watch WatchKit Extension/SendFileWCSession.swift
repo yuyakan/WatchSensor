@@ -22,11 +22,16 @@ class SendFileWCSession: NSObject, WCSessionDelegate {
         }
     }
     
-    func sendFile() {
+    func sendFile() -> Bool {
         let directoryName = makeDirName()
-        sendMotionFile(directoryName: directoryName)
-        sendGpsFile(directoryName: directoryName)
-        sendGravityAndAttitudeFile(directoryName: directoryName)
+        let isMotionFileSended = sendMotionFile(directoryName: directoryName)
+        let isGpsFileSended = sendGpsFile(directoryName: directoryName)
+        let isGravityAndAttitudeFileSended = sendGravityAndAttitudeFile(directoryName: directoryName)
+        
+        if isMotionFileSended && isGpsFileSended && isGravityAndAttitudeFileSended {
+            return true
+        }
+        return false
     }
     
     func makeDirName() -> String {
@@ -36,7 +41,7 @@ class SendFileWCSession: NSObject, WCSessionDelegate {
         return fileName
     }
     
-    func sendMotionFile(directoryName: String){
+    func sendMotionFile(directoryName: String) -> Bool {
         let csv = crateCsv.createMotionCsv()
         
         let tempDirectory = FileManager.default.temporaryDirectory
@@ -50,11 +55,12 @@ class SendFileWCSession: NSObject, WCSessionDelegate {
             WCSession.default.transferFile(url, metadata: message)
             print(url)
         } catch {
-            print("Faild to save")
+            return false
         }
+        return true
     }
     
-    func sendGpsFile(directoryName: String){
+    func sendGpsFile(directoryName: String) -> Bool {
         let csv = crateCsv.createGpsCsv()
         
         let tempDirectory = FileManager.default.temporaryDirectory
@@ -68,11 +74,12 @@ class SendFileWCSession: NSObject, WCSessionDelegate {
             try csv.write(to: url, atomically: true, encoding: String.Encoding.utf8)
             WCSession.default.transferFile(url, metadata: message)
         } catch {
-            print("Faild to save")
+            return false
         }
+        return true
     }
     
-    func sendGravityAndAttitudeFile(directoryName: String){
+    func sendGravityAndAttitudeFile(directoryName: String) -> Bool {
         let csv = crateCsv.crateGravityAndAttitudeCsv()
         
         let tempDirectory = FileManager.default.temporaryDirectory
@@ -84,9 +91,9 @@ class SendFileWCSession: NSObject, WCSessionDelegate {
         do {
             try csv.write(to: url, atomically: true, encoding: String.Encoding.utf8)
             WCSession.default.transferFile(url, metadata: message)
-            print(url)
         } catch {
-            print("Faild to save")
+            return false
         }
+        return true
     }
 }

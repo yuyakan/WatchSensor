@@ -52,19 +52,21 @@ class InterfaceController: WKInterfaceController {
     @IBAction func SaveButton() {
         
         SaveButtonOutlet.setEnabled(false)
-        wcSession.sendFile()
+        let isFileSended = wcSession.sendFile()
         
-        let saveAction = WKAlertAction.init(title: "OK",
-                                              style: .default,
-                                              handler: {
-                                                print("save complete")
-        })
-        self.presentAlert(withTitle: "Save complete",
-                          message: "",
-                          preferredStyle: .alert,
-                          actions: [saveAction])
-        
-        TimeLabel.setText("0.00")
+        if isFileSended {
+            let saveAction = WKAlertAction.init(title: "OK",
+                                                  style: .default,
+                                                  handler: {
+                                                    print("save complete")
+            })
+            self.presentAlert(withTitle: "Save complete",
+                              message: "",
+                              preferredStyle: .alert,
+                              actions: [saveAction])
+            
+            TimeLabel.setText("0.00")
+        }
     }
 }
 

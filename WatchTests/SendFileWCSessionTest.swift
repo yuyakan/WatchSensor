@@ -17,5 +17,22 @@ class SendFileWCSessionTest: XCTestCase {
         dateFormatter.dateFormat = "[MM_dd]HH-mm-ss"
         XCTAssertEqual(sendFileWCSession.makeDirName(), dateFormatter.string(from: Date()))
     }
+    
+    func testSendFile(){
+        XCTAssertTrue(sendFileWCSession.sendFile())
+    }
+    
+    func testSendMotionFile(){
+        XCTAssertTrue(sendFileWCSession.sendMotionFile(directoryName: "directoryName"))
+    }
+    
+    func testSendGpsFile(){
+        XCTAssertTrue(sendFileWCSession.sendGpsFile(directoryName: "directoryName"))
+    }
+    
+    func testSendGravityAndAttitudeFile(){
+        XCTAssertTrue(sendFileWCSession.sendGravityAndAttitudeFile(directoryName: "directory"))
+    }
+    
 
 }
